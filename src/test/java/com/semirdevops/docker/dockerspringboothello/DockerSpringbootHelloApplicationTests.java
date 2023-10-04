@@ -1,4 +1,4 @@
-package com.javaexpress.docker.dockerspringboothello;
+package com.semirdevops.docker.dockerspringboothello;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
