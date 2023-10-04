@@ -1,28 +1,26 @@
-pipeline {
-    agent any 
-    tools {
-        maven "3.8.5"
-    
+pipeline{
+    agent any
+    tools{
+        maven 'apacheMaven'
     }
-    stages {
-	stage('Git Checkout'){
+    stages{
+        stage('Git Checkout'){
             steps{
                 git url:'https://github.com/Semir-Devops/docker-jenkins', branch: 'main'
             }
         }
         stage('Maven build'){
             steps{
-                sh 'mvn clean package'
+                sh 'mvn clean compile'
             }
         }
-	stage('deploy') { 
-            
-            steps {
-                sh "mvn package"
+        stage('Maven build install'){
+            steps{
+                sh 'mvn install'
             }
         }
         stage('Build Docker image'){
-          
+
             steps {
                 echo "Hello Semirdevops"
                 sh 'ls'
@@ -30,12 +28,11 @@ pipeline {
             }
         }
         stage('Docker Login'){
-            
             steps {
-                 withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
-                    sh "docker login -u semirdevops -p ${Dockerpwd}"
+                 withCredentials([string(credentialsId: 'dockerHubpwd', variable: 'Dockerhubpwd')]) {
+                     sh 'docker login -u semirdevops -p ${Dockerhubpwd}'
                 }
-            }                
+            }
         }
         stage('Docker Push'){
             steps {
@@ -44,10 +41,8 @@ pipeline {
         }
         stage('Docker deploy'){
             steps {
-               
-                sh 'docker run -itd -p 8081:8080 semirdevops/docker_jenkins_springboot:${BUILD_NUMBER}'
+                sh 'docker run -dit -p 8081:8080 semirdevops/docker_jenkins_springboot:${BUILD_NUMBER}'
             }
         }
     }
 }
-
