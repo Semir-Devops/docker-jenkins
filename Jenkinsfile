@@ -41,7 +41,7 @@ pipeline{
         }
         stage('Docker deploy'){
             steps {
-                sh 'docker run -dit -p 8081:8080 semirdevops/docker_jenkins_springboot:${BUILD_NUMBER}'
+                sh 'docker run -dit -p 8082:8080 semirdevops/docker_jenkins_springboot:${BUILD_NUMBER}'
             }
         }
     }
