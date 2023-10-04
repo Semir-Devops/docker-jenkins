@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:11
 
 ADD target/semirdevops-springboot-docker.jar semirdevops-springboot-docker.jar
 
