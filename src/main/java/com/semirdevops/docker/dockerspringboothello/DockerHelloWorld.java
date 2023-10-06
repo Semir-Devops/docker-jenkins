@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1/docker-container")
-@PageTitle("Welcome")
 public class DockerHelloWorld {
 
 	@GetMapping
