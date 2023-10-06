@@ -3,7 +3,7 @@ package com.semirdevops.docker.dockerspringboothello;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/v1/docker-container")
+@RequestMapping("/docker-container")
 public class DockerHelloWorld {
 
 	@GetMapping
