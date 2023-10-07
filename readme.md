@@ -36,12 +36,24 @@ The Dockerfile shows the container how it should be deployed.
 
 <b><ins>"EXPOSE 8080"</b></ins>: This command will expose port 8080 on the container to traffic.
 
-<b><ins>"ADD target/semirdevops-springboot-docker.jar semirdevops-springboot-docker.jar"</b></ins>:<br/> This command will take our jar file that is stored on our virtual machine.
+<b><ins>"ADD target/semirdevops-springboot-docker.jar semirdevops-springboot-docker.jar"</b></ins>:<br/> This command will take our jar file that is stored on our virtual machine & store it into the image filesystem.
 
 <b><ins>"ENTRYPOINT ["java","-jar","semirdevops-springboot-docker.jar"]"</b></ins>: This command will run the executable file on the container.
 
 <hr/>
 
+My Build on Jenkins:
+
 <img width="848" alt="Jenkins-pipeline" src="https://github.com/Semir-Devops/docker-jenkins/assets/144611511/af783694-de71-4f67-8af3-eb81a4a8e618">
+
+<hr/>
+
+The Docker image pushed to the hub:
+
 <img width="803" alt="Docker-hub" src="https://github.com/Semir-Devops/docker-jenkins/assets/144611511/e1364a6b-e317-46f6-a53a-2ceb5c06e505">
+
+<hr/>
+
+The output of the Docker container:
+
 <img width="941" alt="Docker-output" src="https://github.com/Semir-Devops/docker-jenkins/assets/144611511/dea6f8f7-aa78-4835-9b25-c8effb2f3101">
